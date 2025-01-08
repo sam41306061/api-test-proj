@@ -1,0 +1,54 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Ping Service API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:30000"
+    }
+  ],
+  "paths": {
+    "/ping": {
+      "post": {
+        "summary": "Ping Endpoint",
+        "parameters": [
+          {
+            "name": "message",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse"
+                }
+              }
+            }
+          }
+        },
+        "components": {
+          "schemas": {
+            "PingResponse": {
+              "type": "object",
+              "properties": {
+                "echo": { "type": "string" },
+                "timestamp": { "type": "number" },
+                "env": { "type": "string" },
+                "version": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
