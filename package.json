@@ -4,7 +4,8 @@
   "description": "test project outlining api endpoint with Go, Rust, and Typescript",
   "main": "main.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "ts-node typescript/main.ts"
   },
   "keywords": [
     "Typescript",
@@ -15,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "@types/socket.io": "^3.0.1",
+    "@types/supertest": "^6.0.2",
     "express": "^4.21.2",
     "socket.io": "^4.8.1",
     "swagger-ui-express": "^5.0.1",
@@ -22,6 +24,10 @@
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
-    "@types/swagger-ui-express": "^4.1.7"
+    "@types/jest": "^29.5.14",
+    "@types/swagger-ui-express": "^4.1.7",
+    "supertest": "^7.0.0",
+    "ts-jest": "^29.2.5",
+    "tsconfig-paths": "^4.2.0"
   }
 }
