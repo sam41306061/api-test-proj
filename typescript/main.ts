@@ -4,7 +4,7 @@ import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./json/swagger.json";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = parseInt(process.env.PORT || "0") || 42069;
 
 app.use(express.json());
 
@@ -13,16 +13,18 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Ping endpoint
 app.post("/ping", async (req, res) => {
   try {
-    const message = req.body.message;
-    if (!message) {
-      res.status(400).json({ error: "Message is required" });
+    const message: string = req.body.message;
+    // check if there is no message or a bad value
+    if (!message || typeof message !== "string") {
+      res.status(400).json({ error: "Message is missing or is not a string" });
     }
     const echoResponse = `Echo: ${message}`;
     const response = {
       echo: echoResponse,
-      timestamp: Date.now(),
+      timestamp: new Date().toISOString(),
       env: process.env.NODE_ENV,
       version: "1.0.0",
+      originalMessage: message,
     };
     res.status(200).json(response);
   } catch (error) {
@@ -30,7 +32,6 @@ app.post("/ping", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
-// TODO: Implement unit tests for ping endpoint
 
 // TODO: Implement integration tests for ping endpoint
 

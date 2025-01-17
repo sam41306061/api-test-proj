@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:30000"
+      "url": "http://localhost:3000"
     }
   ],
   "paths": {
@@ -34,19 +34,19 @@
               }
             }
           }
-        },
-        "components": {
-          "schemas": {
-            "PingResponse": {
-              "type": "object",
-              "properties": {
-                "echo": { "type": "string" },
-                "timestamp": { "type": "number" },
-                "env": { "type": "string" },
-                "version": { "type": "string" }
-              }
-            }
-          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "PingResponse": {
+        "type": "object",
+        "properties": {
+          "echo": { "type": "string" },
+          "timestamp": { "type": "number" },
+          "env": { "type": "string" },
+          "version": { "type": "string" }
         }
       }
     }
